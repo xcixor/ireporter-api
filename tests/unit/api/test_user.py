@@ -31,6 +31,7 @@ class TestUser(TC):
         res = self.client().post('/api/v2/auth/signup', data=self.user)
         self.assertEqual(res.status_code, 201)
         res = res.get_json()
+
         self.assertEqual(res['data']['message'],
                          'You have successfuly signed up')
 
@@ -107,16 +108,3 @@ class TestUser(TC):
         res = res.get_json()
         self.assertEqual(res['error'][0],
                          'Password should not be blank')
-
-    # def test_signup_with_blank_confirm_password_false(self):
-    #     """Test password is present."""
-    #     user = {
-    #         "Email": "a@g.com",
-    #         "Password": "pass1234",
-    #         "Confirm Password": "    "
-    #     }
-    #     res = self.client().post('/api/v2/auth/signup', data=user)
-    #     self.assertEqual(res.status_code, 400)
-    #     res = res.get_json()
-    #     self.assertEqual(res['error'][0],
-    #                      'Password should not be blank')
