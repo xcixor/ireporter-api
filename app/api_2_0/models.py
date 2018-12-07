@@ -49,8 +49,8 @@ class User(UserValidator):
                         self.connection.commit()
                         return {'status': True,
                                 'message': "You have successfuly signed up"}
-                    except Exception as e:
-                        return {'Status': False, 'message': '{}'.format(e)}
+                    except Exception as error:
+                        return {'Status': False, 'message': '{}'.format(error)}
                 return {'status': False, 'message': self.errors}
             return {'status': False, 'message': self.errors}
         return {'status': False, 'message': self.errors}

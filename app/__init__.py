@@ -6,9 +6,9 @@ from instance.config import config
 
 from manage import init_db
 
-from app.api_2_0 import version_two as v_2
+from app.api_2_0 import VERSION_TWO as v_2
 
-from app.api_2_0.error_handlers import error_handlers
+from app.api_2_0.error_handlers import ERROR_HANDLERS
 
 
 def create_app(configuration):
@@ -28,6 +28,6 @@ def create_app(configuration):
 
     # register blueprints
     app.register_blueprint(v_2)
-    app.register_blueprint(error_handlers)
+    app.register_blueprint(ERROR_HANDLERS)
 
     return app
