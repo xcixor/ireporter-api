@@ -6,6 +6,10 @@ from instance.config import config
 
 from manage import init_db
 
+from app.api_2_0 import version_two as v_2
+
+from app.api_2_0.error_handlers import error_handlers
+
 
 def create_app(configuration):
     """Set up app.
@@ -21,5 +25,9 @@ def create_app(configuration):
     app.config.from_object(config[configuration])
     db_config = config[configuration].db
     init_db(db_config)
+
+    # register blueprints
+    app.register_blueprint(v_2)
+    app.register_blueprint(error_handlers)
 
     return app
