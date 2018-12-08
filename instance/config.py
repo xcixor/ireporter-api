@@ -32,7 +32,7 @@ class Testing(Config):
         "user": os.getenv('USER'),
         "password": os.getenv('PASSWORD'),
         "host": os.getenv('HOST'),
-        "port": os.getenv('POSTRGRESPORT')
+        "port": os.getenv('POSTGRESPORT')
     }
 
 
