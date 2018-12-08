@@ -8,7 +8,7 @@ from manage import init_db
 
 from app.api_2_0 import VERSION_TWO as v_2
 
-from app.api_2_0.error_handlers import ERROR_HANDLERS
+from app.error_handlers import ERROR_HANDLERS
 
 
 def create_app(configuration):
