@@ -6,6 +6,17 @@ python:
 install:
   - pip install -r requirements.txt
 
+before_script:
+  - psql -c "create database test_ireporter;" -U postgres
+  - psql -c "create user developer with password 'developer';" -U postgres
+
+env:
+  - HOST="localhost"
+  - POSTGRESPORT="5432"
+  - TEST_DATABASE_NAME="test_ireporter"
+  - USER="developer"
+  - PASSWORD="developer"
+
 script:
   - py.test --cov=app tests/
 
