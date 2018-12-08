@@ -24,7 +24,13 @@ def connect(db_config):
     finally:
         if conn is not None:
             print("Connected to db")
+            db_connection['connection'] = conn
             return conn
+
+
+def return_conn(connection):
+    """Return db connection."""
+    return connection
 
 
 def init_db(db_config):
@@ -57,7 +63,7 @@ def drop_tables(db_config):
             query = "DROP TABLE IF EXISTS {} CASCADE;".format(table)
             cursor.execute(query)
             conn.commit()
-            print('Table {} deleted'.format(table), '\n')
+        # print('Table {} deleted'.format(tables), '\n')
     except(Exception, psycopg2.DatabaseError) as error:
         print("Warning: Table Deletion Error", error)
 
@@ -66,10 +72,8 @@ def table_queries():
     """Table queries."""
     tables = []
     user = "CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY,\
-    email VARCHAR, \
+    email VARCHAR(60), \
     user_Password TEXT, \
-    firstName TEXT,\
-    lastName TEXT, \
     date_created DATE,\
     is_admin Boolean);"
     tables.append(user)
@@ -111,3 +115,5 @@ def table_queries():
     tables.append(login)
 
     return tables
+
+db_connection = {'connect': None}

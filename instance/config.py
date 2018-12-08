@@ -28,11 +28,11 @@ class Testing(Config):
 
     TESTING = True
     db = {
-        "dbname": os.getenv('test_dbname'),
-        "user": os.getenv('user'),
-        "password": os.getenv('password'),
-        "host": os.getenv('host'),
-        "port": os.getenv('postgresport')
+        "dbname": os.getenv('TEST_DATABASE_NAME'),
+        "user": os.getenv('USER'),
+        "password": os.getenv('PASSWORD'),
+        "host": os.getenv('HOST'),
+        "port": os.getenv('POSTGRESPORT')
     }
 
 
